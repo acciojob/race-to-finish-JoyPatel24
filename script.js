@@ -26,3 +26,13 @@ window.promises.push(
 window.promises.push(
   new Promise((resolve) => setTimeout(() => resolve("Promise 5"), Math.random() * 5000 + 1000))
 );
+
+// Promise.any to wait for the first promise to resolve
+Promise.any(window.promises)
+  .then((result) => {
+    // Print the result to the output div
+    document.getElementById("output").innerText = result;
+  })
+  .catch((error) => {
+    console.error(error);
+  });
